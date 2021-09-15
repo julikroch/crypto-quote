@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
 
+const Container = styled.div`
+  display: flex;
+`
+
 function App() {
   return (
-    <div className="App">
-     
-    </div>
+    <Container></Container>
   );
 }
 
