@@ -1,19 +1,18 @@
 import { Fragment, useState } from "react"
 
-const useCoin = () => {
+const useCurrency = () => {
 
-    const [state, setState] = useState('');
+    const [state, setState] = useState();
 
-    const Select = () => {
+    const Select = () => (
         <Fragment>
             <label>Coin</label>
             <select>
                 <option value="MXN">Peso Mexicano</option>
             </select>
         </Fragment>
-    }
-    
-    return [state, Select, setState]
+    )
+    return [state, Select, setState] as const
 }
 
-export default useCoin
+export default useCurrency

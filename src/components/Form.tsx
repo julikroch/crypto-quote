@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import useCoin from "../hooks/useCoin"
+import useCurrency from "../hooks/useCurrency"
 
 const Button = styled.input`
     margin-top: 20px;
@@ -20,7 +20,7 @@ const Button = styled.input`
 
 const Form = () => {
     
-    const [coin, Select, setState] = useCoin()
+    const [coin, Select, setState] = useCurrency()
 
     return (
         <div>
