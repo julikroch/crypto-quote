@@ -1,5 +1,5 @@
-import styled from "@emotion/styled"
 import useCurrency from "../hooks/useCurrency"
+import styled from "@emotion/styled"
 
 const Button = styled.input`
     margin-top: 20px;
@@ -19,8 +19,19 @@ const Button = styled.input`
 `
 
 const Form = () => {
-    
-    const [coin, Select, setState] = useCurrency()
+
+    const CURRENCIES = [
+        { code: 'USD', name: 'US Dollar' },
+        { code: 'MXN', name: 'Mexican Peso' },
+        { code: 'EUR', name: 'Euro' },
+        { code: 'GBP', name: 'Pounds' }
+    ]
+
+    const [currency, Select] = useCurrency({
+        label: 'Select your currency',
+        initialState: '',
+        currencies: CURRENCIES
+    })
 
     return (
         <div>
