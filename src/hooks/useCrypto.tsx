@@ -1,5 +1,5 @@
-import { Fragment, useState } from "react"
-import styled from "@emotion/styled";
+import { Fragment, useState } from 'react'
+import styled from '@emotion/styled';
 
 const Label = styled.label`
     font-family: 'Bebas Neue', cursive;
