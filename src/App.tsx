@@ -67,7 +67,7 @@ function App() {
   return (
     <Container>
       <div>
-        <Img src={img} alt="Crypto Image" />
+        <Img src={img} alt='Crypto Image' />
       </div>
       <div>
         <Heading>Quote your crypto instantly!</Heading>
