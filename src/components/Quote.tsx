@@ -4,11 +4,9 @@ const DivResult = styled.div`
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 `
-
 const Paragraph = styled.p`
     font-size: 18px;
 `
-
 const Price = styled.p`
     font-size: 30px;
 `
