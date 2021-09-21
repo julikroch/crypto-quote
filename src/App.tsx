@@ -1,6 +1,10 @@
+import { useState, useEffect } from 'react';
+import Form from './components/Form';
+import Spinner from './components/Spinner/Spinner';
+import Quote from './components/Quote';
+import axios from 'axios';
 import styled from '@emotion/styled';
 import img from './crypto.png'
-import Form from './components/Form';
 
 const Container = styled.div`
   max-width: 900px;
@@ -35,6 +39,31 @@ const Heading = styled.h1`
 `
 
 function App() {
+
+  const [currency, saveCurrency] = useState('')
+  const [crypto, saveCrypto] = useState('')
+  const [response, saveResponse] = useState({})
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const quoteCrypto = async () => {
+      if (currency === '') return
+
+      const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
+      const result = await axios.get(url)
+
+      setLoading(true)
+
+      setTimeout(() => {
+        setLoading(false)
+        saveResponse(result.data.DISPLAY[crypto][currency])
+      }, 1000)
+    }
+
+    quoteCrypto()
+
+  }, [currency, crypto])
+
   return (
     <Container>
       <div>
@@ -42,7 +71,11 @@ function App() {
       </div>
       <div>
         <Heading>Quote your crypto instantly!</Heading>
-        <Form />
+        <Form
+          saveCurrency={saveCurrency}
+          saveCrypto={saveCrypto}
+        />
+        {loading ? <Spinner /> : <Quote response={response} />}
       </div>
     </Container>
   );

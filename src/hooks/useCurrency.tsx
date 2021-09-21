@@ -36,7 +36,7 @@ const useCurrency = (props: { label: string, initialState: string, currencies: a
             >
                 <option>--Select--</option>
                 {currencies.map((currency: any) => (
-                    <option key={currency.code}>{currency.name}</option>
+                    <option key={currency.code} value={currency.code}>{currency.name}</option>
                 ))}
             </Selector>
         </Fragment>

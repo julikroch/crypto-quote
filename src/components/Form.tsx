@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
-import useCurrency from "../hooks/useCurrency"
-import useCrypto from "../hooks/useCrypto"
-import axios from "axios"
-import styled from "@emotion/styled"
+import { useEffect, useState } from 'react'
+import Error from './Error'
+import useCurrency from '../hooks/useCurrency'
+import useCrypto from '../hooks/useCrypto'
+import axios from 'axios'
+import styled from '@emotion/styled'
 
 const Button = styled.input`
     margin-top: 20px;
@@ -21,8 +22,9 @@ const Button = styled.input`
     }
 `
 
-const Form = () => {
+const Form = (props: { saveCurrency: any, saveCrypto: any }) => {
 
+    const { saveCurrency, saveCrypto } = props
     const [cryptoList, saveCryptoList] = useState([])
     const [error, setError] = useState(false)
 
@@ -63,6 +65,8 @@ const Form = () => {
         }
 
         setError(false)
+        saveCurrency(currency)
+        saveCrypto(crypto)
     }
 
     return (
@@ -70,12 +74,12 @@ const Form = () => {
             <form
                 onSubmit={currencyQuote}
             >
-                {error && <p> All fields are required </p>}
+                {error && <Error message='All fields are required' />}
                 <Select />
                 <SelectCrypto />
                 <Button
-                    type="submit"
-                    value="Calculate"
+                    type='submit'
+                    value='Calculate'
                 />
             </form>
         </div>
